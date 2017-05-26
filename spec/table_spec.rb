@@ -135,19 +135,20 @@ RSpec.describe Table do
       subject do
         t = Table.new
         t.put(0, 0, "abc")
+        t.put(1, 1, "yz")
         t.put(1, 2, "x")
         t
       end
 
-      it "renders values with left alignemtn and the correct column width" do
+      it "renders values with left alignment and the correct column width" do
         expect(subject.to_s).to eq(%q{
-                                    +-----+---+
-                                    | abc |   |
-                                    +-----+---+
-                                    |     |   |
-                                    +-----+---+
-                                    |     | x |
-                                    +-----+---+
+                                    +-----+----+
+                                    | abc |    |
+                                    +-----+----+
+                                    |     | yz |
+                                    +-----+----+
+                                    |     | x  |
+                                    +-----+----+
                                    }.strip_between_newlines)
       end
 
