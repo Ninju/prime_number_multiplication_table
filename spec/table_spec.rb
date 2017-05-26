@@ -101,5 +101,33 @@ RSpec.describe Table do
                                    }.strip_between_newlines)
       end
     end
+
+    context "table has values scattered all over the place with lots of empty"\
+    "cells" do
+      subject do
+        t = Table.new
+        t.put(0, 0, "x")
+        t.put(2, 3, "y")
+        t.put(1, 4, "z")
+        t
+      end
+
+      it "renders the values in the correct places and with the correct"\
+      "formatting" do
+        expect(subject.to_s).to eq(%q{
+                                    +---+---+---+
+                                    | x |   |   |
+                                    +---+---+---+
+                                    |   |   |   |
+                                    +---+---+---+
+                                    |   |   |   |
+                                    +---+---+---+
+                                    |   |   | y |
+                                    +---+---+---+
+                                    |   | z |   |
+                                    +---+---+---+
+                                   }.strip_between_newlines)
+      end
+    end
   end
 end
