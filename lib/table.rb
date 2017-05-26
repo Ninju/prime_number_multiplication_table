@@ -1,11 +1,16 @@
 class Table
   def initialize
     @table = []
+    @column_widths = {}
   end
 
   def put(col, row, value)
     @table[row] ||= []
     @table[row][col] = value
+    @column_widths[col] = [
+      max_value_length_in_column(col),
+      value.to_s.length
+    ].max
   end
 
   def get(col, row)
@@ -16,11 +21,15 @@ class Table
     if table.empty?
       "++\n\++\n[EMPTY]"
     else
-      row_separator = "+---" * width + "+"
+      row_separator = "+" + width.times.map do |col|
+        column_width = max_value_length_in_column(col)
+        "--" + "-" * column_width
+      end.join("+") + "+"
 
       table_center = height.times.map do |row|
         "| " + width.times.map do |col|
-          get(col, row) || " "
+          column_width = max_value_length_in_column(col)
+          get(col, row) || " " * column_width
         end.join(" | ") + " |"
       end.join("\n#{row_separator}\n")
 
@@ -34,7 +43,7 @@ class Table
 
   private
 
-  attr_reader :table
+  attr_reader :table, :column_widths
 
   def height
     table.length
@@ -42,5 +51,9 @@ class Table
 
   def width
     table.map { |row| row&.length || 0 }.max
+  end
+
+  def max_value_length_in_column(col)
+    column_widths.fetch(col) { 1 }
   end
 end

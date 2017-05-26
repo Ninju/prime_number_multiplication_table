@@ -129,5 +129,45 @@ RSpec.describe Table do
                                    }.strip_between_newlines)
       end
     end
+
+    context "dynamically resizes column widths on a per column basis, based on"\
+    "largest value" do
+      subject do
+        t = Table.new
+        t.put(0, 0, "abc")
+        t.put(1, 2, "x")
+        t
+      end
+
+      it "renders values with left alignemtn and the correct column width" do
+        expect(subject.to_s).to eq(%q{
+                                    +-----+---+
+                                    | abc |   |
+                                    +-----+---+
+                                    |     |   |
+                                    +-----+---+
+                                    |     | x |
+                                    +-----+---+
+                                   }.strip_between_newlines)
+      end
+
+      context "there is an empty column" do
+        subject do
+          t = Table.new
+          t.put(1, 1, "x")
+          t
+        end
+
+        it "renders empty columns as having a width of 1" do
+          expect(subject.to_s).to eq(%q{
+                                      +---+---+
+                                      |   |   |
+                                      +---+---+
+                                      |   | x |
+                                      +---+---+
+                                     }.strip_between_newlines)
+        end
+      end
+    end
   end
 end
