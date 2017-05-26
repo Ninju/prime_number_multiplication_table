@@ -1,8 +1,7 @@
 require 'spec_helper'
-require 'table'
 
 RSpec.describe Table do
-  subject { Table.new }
+  subject { described_class.new }
 
   it "allows you to place values into cells into any location without needing"\
   "to specify table dimensions (i.e. infinite canvas)" do
