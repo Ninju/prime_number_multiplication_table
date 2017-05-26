@@ -29,7 +29,7 @@ class Table
       table_center = height.times.map do |row|
         "| " + width.times.map do |col|
           column_width = max_value_length_in_column(col)
-          value = get(col, row) || " " * column_width
+          value = get(col, row).to_s || " " * column_width
           value.ljust(column_width)
         end.join(" | ") + " |"
       end.join("\n#{row_separator}\n")

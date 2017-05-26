@@ -20,6 +20,19 @@ RSpec.describe Table do
       end
     end
 
+    context "table containing numerical values" do
+      subject do
+        t = Table.new
+        t.put(0, 0, 5)
+        t
+      end
+
+      it "doesn't raise an undefined method error because we are calling"\
+      "string methods" do
+        expect { subject.to_s }.not_to raise_error(NoMethodError)
+      end
+    end
+
     context "table with values in the first column with no empty rows" do
       subject do
         t = Table.new
