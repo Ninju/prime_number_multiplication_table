@@ -28,7 +28,7 @@ RSpec.describe Table do
 
       it "doesn't raise an undefined method error because we are calling"\
       "string methods" do
-        expect { subject.to_s }.not_to raise_error(NoMethodError)
+        expect { subject.to_s }.not_to raise_error
       end
     end
 
