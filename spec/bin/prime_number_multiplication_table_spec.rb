@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'prime_number_multiplication_table' do
-  subject { system("bin/#{self.class.description}") }
+  subject { system("ruby -Ilib bin/#{self.class.description}") }
 
   # This is mostly for more useful error messages
   it "doesnt print anything out to stderr" do
