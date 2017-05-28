@@ -22,6 +22,8 @@ GEM
     rspec-mocks (3.6.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.6.0)
+    rspec-rainbow (0.2.1)
+      rspec (>= 2.14.0, < 4)
     rspec-support (3.6.0)
     slop (3.6.0)
 
@@ -32,6 +34,7 @@ DEPENDENCIES
   pry
   pry-nav
   rspec
+  rspec-rainbow
 
 BUNDLED WITH
    1.11.2
