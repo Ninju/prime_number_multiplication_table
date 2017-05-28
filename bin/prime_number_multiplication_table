@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'prime_number_multiplication_table'
+
+app = PrimeNumberMultiplicationTable::Application.new
+app.run

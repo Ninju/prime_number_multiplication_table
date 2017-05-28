@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe MultiplicationTable do
+RSpec.describe PrimeNumberMultiplicationTable::MultiplicationTable do
   subject { described_class.new }
 
   it "populates a multiplication table for the given factors" do

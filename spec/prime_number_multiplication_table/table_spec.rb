@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Table do
+RSpec.describe PrimeNumberMultiplicationTable::Table do
   subject { described_class.new }
 
   it "allows you to place values into cells into any location without needing"\
@@ -21,7 +21,7 @@ RSpec.describe Table do
 
     context "table containing numerical values" do
       subject do
-        t = Table.new
+        t = described_class.new
         t.put(0, 0, 5)
         t
       end
@@ -34,7 +34,7 @@ RSpec.describe Table do
 
     context "table with values in the first column with no empty rows" do
       subject do
-        t = Table.new
+        t = described_class.new
         t.put(0, 0, "x")
         t.put(0, 1, "y")
         t.put(0, 2, "z")
@@ -56,7 +56,7 @@ RSpec.describe Table do
 
     context "table with values in the first column with empty rows" do
       subject do
-        t = Table.new
+        t = described_class.new
         t.put(0, 0, "x")
         t.put(0, 1, "y")
         t.put(0, 3, "z")
@@ -80,7 +80,7 @@ RSpec.describe Table do
 
     context "table with values in the first row with no empty columns" do
       subject do
-        t = Table.new
+        t = described_class.new
         t.put(0, 0, "x")
         t.put(1, 0, "y")
         t.put(2, 0, "z")
@@ -98,7 +98,7 @@ RSpec.describe Table do
 
     context "table with values in the first row and empty columns" do
       subject do
-        t = Table.new
+        t = described_class.new
         t.put(0, 0, "x")
         t.put(1, 0, "y")
         t.put(3, 0, "z")
@@ -117,7 +117,7 @@ RSpec.describe Table do
     context "table has values scattered all over the place with lots of empty"\
     "cells" do
       subject do
-        t = Table.new
+        t = described_class.new
         t.put(0, 0, "x")
         t.put(2, 3, "y")
         t.put(1, 4, "z")
@@ -145,7 +145,7 @@ RSpec.describe Table do
     context "dynamically resizes column widths on a per column basis, based on"\
     "largest value" do
       subject do
-        t = Table.new
+        t = described_class.new
         t.put(0, 0, "abc")
         t.put(1, 1, "yz")
         t.put(1, 2, "x")
@@ -166,7 +166,7 @@ RSpec.describe Table do
 
       context "there is an empty column" do
         subject do
-          t = Table.new
+          t = described_class.new
           t.put(1, 1, "x")
           t
         end
