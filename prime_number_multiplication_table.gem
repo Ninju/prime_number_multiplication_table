@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.description = "Prints out a multiplication table of the first 10 primes. Can easily be adapted to print the first N prime numbers, or a multiplication table containing any factors. When printing, column widths adjust to fit the largest element."
   s.authors     = ["Alex Watt"]
   s.email       = 'el.zingo@gmail.com'
+  s.executables << 'prime_number_multiplication_table'
   s.files       = ["lib/prime_number_multiplication_table.rb"]
   s.homepage    = 'http://rubygems.org/gems/prime_number_multiplication_table'
   s.license     = 'MIT'

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe PrimeNumberGenerator do
+RSpec.describe PrimeNumberMultiplicationTable::PrimeNumberGenerator do
   subject { described_class.new }
 
   it 'gives the first N prime numbers in ascending order' do
