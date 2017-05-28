@@ -1,7 +1,11 @@
 class Application
   def run
-    m = MultiplicationTable.new
-    m.populate([2,3,5,7,11,13,17,19,23,29])
-    puts m
+    prime_number_generator = PrimeNumberGenerator.new
+    primes = prime_number_generator.take(10)
+
+    multiplication_table = MultiplicationTable.new
+    multiplication_table.populate(primes)
+
+    puts multiplication_table
   end
 end
