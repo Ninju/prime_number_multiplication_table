@@ -9,9 +9,14 @@ module PrimeNumberMultiplicationTable
         table.put(idx + 1, 0, factor)
         table.put(0, idx + 1, factor)
 
-        factors.each_with_index do |factor2, idx2|
+        square_product = factor * factor
+        table.put(idx + 1, idx + 1, square_product)
+
+        factors[(idx + 1)..-1].each_with_index do |factor2, offset_idx2|
+          idx2 = offset_idx2 + idx + 1
           product = factor * factor2
           table.put(idx + 1, idx2 + 1, product)
+          table.put(idx2 + 1, idx + 1, product)
         end
       end
     end
